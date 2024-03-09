@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  font-family: 'Poppins';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Poppins';
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins';
+}
+
+.container {
+  max-width: 94% !important;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0 !important;
+}
+
+h1 {
+  margin-top: 0;
+  width: fit-content;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.msg span {
+  width: fit-content;
+  padding: 0 5px;
+  background: #f3f7f3;
+}
+
+.msg b {
+  color: #000;
+}
+
+.warning span {
+  color: red;
+}
+
+.done span {
+  color: green;
+}
+
+.wave-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.wave-img-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: rotate(180deg);
+}
+
+.blur-color {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+}
+
+.banner {
+  background: linear-gradient(180deg,#f6f6f6, #fefce8);
+}
+
+.banner .banner-content {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  margin-bottom: 50px;
+}
+
+
+.special-btn {
+  position: relative;
+  display: block;
+  padding: 10px;
+  width: 300px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #0f172a;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.special-btn:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  opacity: 0;
+  transition: .5s;
+}
+
+.main-btn:hover .special-btn:after {
+  opacity: 1;
+}
+
+.table {
+  margin: 30px 0;
+}
+
+.table th {
+  text-align: center;
+  background: #f8f8f8 !important;
+}
+
+.table td {
+  height: 100px;
+  vertical-align: baseline;
+  text-align: center;
+}
+
+.table td:nth-child(odd) {
+  background: #f8fafc;
+}
+
+.table td:nth-child(even) {
+  background: #fefce8;
+}
+
+.table td:last-child,
+.table td:first-child,
+.table th:last-child,
+.table th:first-child {
+  width: 100px;
+}
+
+.table .imgbx img {
+  width: 80px;
+}
+
+.remove-btn button {
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+

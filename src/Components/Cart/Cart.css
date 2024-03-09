@@ -1,0 +1,142 @@
+.cart {
+    margin-bottom: 60px;
+}
+
+.cart .final-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: #fefce8;
+    border: 1px solid #d7d7d7;
+}
+
+.cart .final-details .promocode input {
+    height: 40px;
+    outline: none;
+    padding: 5px 10px;
+    border: 1px solid #d7d7d7;
+    font-size: 15px;
+}
+
+.cart .final-details .promocode button,
+.cart .final-details .update-cart button {
+    height: 40px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 15px;
+    background: rebeccapurple;
+    color: #fff;
+}
+
+.cart .final-details .total {
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    
+}
+
+.cart .final-details .total b {
+    letter-spacing: 1.3px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.cart .final-details .total span {
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: 1.5px;
+    color: rebeccapurple;
+}
+
+.cart .table .sizes {
+    display: flex;
+    justify-content: center;
+}
+
+.cart .table .sizes .size {
+    margin-right: 10px
+}
+
+.cart .amount {
+    display: flex;
+    justify-content: center;
+}
+
+.cart .amount .num input {
+    width: 47px;
+    height: 42px;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid rgb(245, 242, 242);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.cart .amount .num input:focus {
+    outline: none;
+}
+
+.cart .num input::-webkit-outer-spin-button,
+.cart .num input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cart .num input {
+    -moz-appearance: textfield;
+}
+
+.cart .amount .control {
+    width: 20px;
+    height: 42px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.cart .amount:hover .control {
+    opacity: 1;
+}
+
+.cart .control button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 21px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.cart .control button:first-of-type {
+    background: #edecec;
+}
+
+.cart .control button:last-of-type {
+    background: #dfdede;
+}
+
+.cart .emty-cart {
+    text-align: center;
+}
+
+.cart .emty-cart h2 {
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.cart .emty-cart .main-btn {
+    width: fit-content;
+    margin: 40px auto;
+}
+
+.cart .emty-cart .main-btn .special-btn {
+    display: block;
+    padding: 10px;
+    width: 300px;
+}
+
+.emty-cart-login {
+    font-size: 13px;
+}

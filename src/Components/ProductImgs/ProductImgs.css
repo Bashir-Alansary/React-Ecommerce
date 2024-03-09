@@ -1,0 +1,42 @@
+.product-imgs {
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-imgs .imgs-btns {
+    width: 19%;
+}
+
+.product-imgs .main-img {
+    position: relative;
+    width: 79%;
+    height: 536px; 
+}
+
+.product-imgs .main-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-imgs .main-img .zoom-img {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgb(248, 235, 235);
+    z-index: 5;
+    pointer-events: none;
+    filter: brightness(0.9);
+}
+
+.product-imgs .imgs-btns .img-btn button {
+    border: none;
+    padding: 0;
+    margin-bottom: 2px;
+}
+
+.product-imgs .img-btn button img {
+    width: 100px;
+    height: 100%;
+}

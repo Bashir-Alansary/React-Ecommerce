@@ -1,0 +1,58 @@
+.hero {
+    position: relative;
+    height: 660px;
+    background: url('../../../public/images/hero.png');
+    background-size: cover;
+}
+
+.hero .container {
+    height: 100%;
+}
+
+.hero .content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero .text h5 {
+    margin: 0;
+}
+
+.hero .text h5:first-of-type {
+    color: #ef8256;
+    font-size: 25px;
+    font-family: 'Allison', cursive;
+}
+
+.hero .text h1 {
+    font-size: 55px;
+    margin: 0;
+}
+
+.hero .text h5:last-of-type {
+    color: #1948a0;
+    font-family: 'Allison', cursive;
+    font-size: 35px;
+}
+
+.hero button {
+    display: flex;
+    align-items: center;
+    background: none;
+    padding: 10px 22px;
+    margin-top: 25px;
+    font-size: 16px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.hero button:hover {
+    background: #1948a0;
+    color: #fff;
+}
+
+.hero button span {
+    margin-right: 7px;
+}

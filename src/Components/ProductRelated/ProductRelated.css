@@ -1,0 +1,4 @@
+.product-related {
+    display: flex;
+    justify-content: space-between;
+}

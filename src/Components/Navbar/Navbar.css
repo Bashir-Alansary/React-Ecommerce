@@ -1,0 +1,142 @@
+.navbar {
+    height: 90px;
+    background: linear-gradient(180deg,#d5d5d5, #f6f6f6);
+    padding: 0 !important;
+}
+
+.navbar .container {
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 100px;
+}
+
+.navbar .main-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .main-links .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .main-links .links li {
+    margin-right: 20px;
+}
+
+ .navbar .main-links .link:not(.cart-btn .link) {
+    text-decoration: none;
+    color: black;
+    position: relative;
+ }
+
+ .navbar .links .link:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2%;
+    height: 2px;
+    background: none;
+    transition: 0.5s;
+ }
+
+.navbar li .active:after {
+    background: #ef8256;
+    width: 100%;
+}
+
+.navbar .main-links .tamplates-link {
+    position: relative;
+}
+
+.navbar .main-links .tamplates-link .btn-content {
+    height: 90px;
+    line-height: 90px;
+}
+
+.navbar .main-links .tamplates-link button {
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.navbar .tamplates-link .templates-icon {
+    margin-left: 5px;
+    font-size: 14px;
+    color: #999;
+    transition: 0.5s;
+}
+
+.navbar .tamplates-link:hover .templates-icon{
+    transform: rotate(45deg);
+}
+
+.navbar .tamplates-link:hover button span,
+.navbar .tamplates-link:hover button .templates-icon  {
+    color: #fc5d1f;
+}
+
+.navbar .login-cart {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .login-cart button.special-link {
+    border: none;
+    background: none;
+}
+
+.navbar .login-cart .special-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.navbar .login-cart .special-link .icon {
+    font-size: 22px;
+    color: #000;
+}
+
+.navbar .login-cart .special-link .icon.heart {
+    color: #fc5d1f;
+}
+
+.navbar .login-cart .cart-btn {
+    position: relative;
+    margin-left: 15px;
+}
+
+.navbar .login-cart .cart-btn > button {
+    background: none;
+    border: none;
+}
+
+.navbar .login-cart .cart-btn button > img {
+    width: 50px;
+}
+
+.navbar .login-cart .cart-btn .count {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 25%;
+    background: #ef8256;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    border-radius: 50%;
+    font-size: 10px;
+}

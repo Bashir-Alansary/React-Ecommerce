@@ -1,0 +1,32 @@
+
+.banner .banner-content {
+    justify-content: space-between;
+}
+
+.banner .container h1 {
+    font-size: 40px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #9C27B0;
+    text-transform: uppercase;
+}
+
+.banner .container h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.banner .container span {
+    color: blueviolet;
+}
+
+.banner .banner-btn {
+    border: none;
+    background: #9C27B0;
+    color: #fff;
+    padding: 10px 25px;
+}
+
+.banner .banner-content .imgbx img {
+    width: 400px;
+}

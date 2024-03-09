@@ -1,0 +1,52 @@
+.offers {
+    position: relative;
+    background: #f6f6f6;
+    padding-bottom: 120px;
+}
+
+.offers .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.offers .content > div {
+    width: 43%;
+}
+
+.offers .text h1 {
+    font-size: 60px;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.offers .text span {
+    display: block;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 45px;
+    text-decoration: underline;
+    color: #bf72ac;
+    font-family: 'Allison', cursive;
+}
+
+.offers .text .offers-btn {
+    border: none;
+    padding: 16px 41px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background: #1948a0;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.offers .imgbx img {
+    width: 100%;
+}
+
+.offers .blur-color {
+    background: linear-gradient(180deg, #f6f6f6, #f8fafc);
+}

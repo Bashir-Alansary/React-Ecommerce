@@ -1,0 +1,136 @@
+.subcart {
+    position: fixed;
+    top: 0;
+    width: 380px;
+    height: 100vh;
+    padding: 20px;
+    background: linear-gradient(180deg,#f6f6f6, #d5d5d5);
+    overflow: hidden;
+    z-index: 999;
+    transition: 1s;
+}
+
+.subcart.show {
+    right: 0;
+}
+
+.subcart.hide {
+    right: -380px;
+}
+
+.subcart .title {
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #999;
+}
+
+.subcart .title h6 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.subcart .title .close {
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: #999;
+    line-height: 5px;
+    height: fit-content;
+    transition: 0.5s;
+}
+
+.subcart .title .close:hover {
+    color: rebeccapurple;
+    transform: rotate(90deg);
+}
+
+.subcart .subcart-items {
+    height: 448px;
+    padding: 5px 0;
+    overflow-y: auto;
+    border-bottom: 1px solid #999;
+}
+
+.subcart .subcart-item .item-amount {
+    color: #888;
+    margin-right: 10px;
+}
+
+.subcart .subcart-item .item-price {
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.subcart .subcart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.subcart .subcart-item img {
+    width: 75px;
+}
+
+.subcart .subcart-item .details {
+    width: 185px;
+}
+
+.subcart .subcart-item h6 {
+    color: #000;
+    margin: 0;
+}
+
+.subcart .subcart-item .remove button {
+    border: none;
+    background: none;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.subcart .subcart-item .remove button:hover {
+    background: #3F51B5;
+    color: #fff;
+}
+
+.subcart .subcart-total {
+    padding: 10px 0;
+    height: fit-content;
+}
+
+.subcart .subcart-btns {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    
+}
+
+.subcart .subcart-btns button {
+    border: none;
+}
+
+.subcart .subcart-btns button,
+.subcart .subcart-btns .link {
+    background: #3F51B5;
+    border-radius: 5px;
+    padding: 7px 37px;
+    color: #fff;
+}
+
+.subcart .emty-cart {
+    text-align: center;
+}
+
+.subcart .emty-cart h2 {
+    font-size: 23px;
+}
+
+.subcart .emty-cart .main-btn {
+    width: fit-content;
+    margin: 40px auto;
+}
+
+.subcart .emty-cart-login {
+    font-size: 13px;
+}

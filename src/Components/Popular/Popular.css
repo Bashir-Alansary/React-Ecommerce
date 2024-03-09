@@ -1,0 +1,13 @@
+.popular {
+    padding: 20px 0;
+}
+
+.popular h1 {
+    margin-top: 0;
+}
+
+.popular .container > .content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

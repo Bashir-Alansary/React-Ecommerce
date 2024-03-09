@@ -1,0 +1,59 @@
+.explore {
+    position: relative;
+    padding-bottom: 270px;
+    background: #f8fafc;
+}
+
+.explore .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.explore .content .box {
+    position: relative;
+    width: 31%;
+    height: 300px;
+    text-decoration: none;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 2px 8px 40px rgba(0,0,0,.08);
+}
+
+.explore .box-content {
+    width: 80%;
+    position: absolute;
+    z-index: 1;
+}
+
+.explore .box-content .img-num {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.explore .img-num .imgbx img {
+    border-radius: 50%;
+    background: #f6f6f6;
+}
+
+.explore .title h2 {
+    margin-top: 0;
+}
+
+.explore .bc-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.explore .bc-img img {
+    width: 300px;
+}
+
+.explore .blur-color {
+    background: linear-gradient(180deg,#f8fafc, #fefce8);
+}

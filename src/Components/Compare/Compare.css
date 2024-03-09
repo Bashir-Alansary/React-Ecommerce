@@ -1,0 +1,87 @@
+.compare {
+    padding-bottom: 70px;
+}
+
+.compare .content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 0;
+}
+
+.compare .box {
+    position: relative;
+    width: 23%;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #f5f2f2;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.compare .box:nth-child(4n) {
+    margin-right: 0;
+}
+
+.compare .box .imgbx {
+    width: 100%;
+}
+
+.compare .box .imgbx img {
+    width: 100%;
+}
+
+.compare .box .text h3 {
+    font-size: 18px;
+    margin: 20px 0;
+    color: #000;
+}
+
+.compare .box .main-btn {
+    width: 200px;
+    margin: 10px auto;
+    margin-bottom: 30px;
+}
+
+.compare .box .special-btn {
+    width: 100%;
+    font-size: 13px;
+}
+
+.compare .box .remove {
+    position: absolute;
+    bottom: -25px;
+    left: 40%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid #f5f2f2;
+    padding: 0;
+}
+
+.compare .box .remove:hover {
+     background: #f5f2f2;
+}
+
+.compare .box .remove-icon {
+    font-size: 26px;
+    color: rgb(143, 125, 125);
+    transition: 0.5s;
+}
+
+.compare .box .remove:hover .remove-icon {
+    color: #000;
+}
+
+.compare .empty-compare{
+    text-align: center;
+}
+
+.compare .main-btn {
+    width: 300px;
+    margin: 30px auto;
+}
