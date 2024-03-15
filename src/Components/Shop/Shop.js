@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
 import { BsGridFill } from "react-icons/bs";
 import { IoCloseSharp } from "react-icons/io5";
@@ -10,6 +9,7 @@ import newArrivals from '../Assets/NewArrivals';
 import PriceRange from '../PriceRange/PriceRange';
 import DropdownMenu from './DropdownMenu/DropdownMenu';
 import { sortBy, shownItemsNum } from '../Assets/DropDownMenu';
+import Pagination from './Pagination/Pagination';
 
 export default function Shop() {
     
@@ -21,11 +21,19 @@ export default function Shop() {
     const[chosenColors, setChosenColors] = useState([]);
     const[chosenTypes, setChosenTypes] = useState([]);
     const[valToSort, setValToSort] = useState(sortBy[0].value);
-
+    const[paginationItems, setPaginationItems] = useState(6);
     const[range, setRange] = useState({
         minRange: 0,
         maxRange: 300,
     });
+
+    // pagination
+    const data = products;
+    const [current, setCurrent] = useState(1);
+    const paginationPages = Math.ceil(data.length / paginationItems);
+    const startIndex = (current - 1) * paginationItems;
+    const endIndex = startIndex + paginationItems;
+    const dataPerPage = data.slice(startIndex, endIndex);
 
     const getFiltersList = () => {
         if (range.minRange === 0 && range.maxRange === 300) {
@@ -36,7 +44,7 @@ export default function Shop() {
     }
 
     const handleShownItemNum = (val) => {
-        setItems(parseInt(val));
+        setPaginationItems(parseInt(val));
       }
 
     const handleDropdownSort = (val, list=products) => {
@@ -145,7 +153,7 @@ export default function Shop() {
                 setIsColorCheck(false);
             }
         }
-        
+        setCurrent(1);
     }
 
     
@@ -200,7 +208,7 @@ export default function Shop() {
                 setIsTypeCheck(false);
             }
         }
-        
+        setCurrent(1);
     }
 
     const filterPrices = () => {
@@ -244,28 +252,17 @@ export default function Shop() {
                 handleDropdownSort(valToSort, finalProducts);
             }
         }
+        setCurrent(1);
     }
 
-    // pagination
-    const data = products;
-    const [items, setItems] = useState(6);
-    const [current, setCurrent] = useState(1);
-    const paginationPages = Math.ceil(data.length / items);
-    const startIndex = (current - 1) * items;
-    const endIndex = startIndex + items;
-    const dataPerPage = data.slice(startIndex, endIndex);
-
-    const handleChevronLeft = () => {
-        if (current > 1) {
-            setCurrent(current - 1);
-        }
-    }
-
-    const handleChevronRight = () => {
-        if (current < paginationPages) {
-            setCurrent(current + 1);
-        }
-    }
+    const mapFiltersList = getFiltersList().map(item => {
+        return (
+            <li>
+                <button className='remove-btn'><IoCloseSharp /></button>
+                <span>{item}</span>
+            </li>
+        )
+    })
 
   return (
     <div className='shop'>
@@ -274,16 +271,7 @@ export default function Shop() {
                 <div className='left-box'>
                     <div className='filter'>
                         <ul className='chosen-filters'>
-                            {
-                                getFiltersList().map(item => {
-                                    return (
-                                        <li>
-                                            <button className='remove-btn'><IoCloseSharp /></button>
-                                            <span>{item}</span>
-                                        </li>
-                                    )
-                                })
-                            }
+                            {mapFiltersList}
                         </ul>
                     </div>
                     <div className='category'>
@@ -379,72 +367,11 @@ export default function Shop() {
                             <div className='no-products'>
                                 <h2>No products</h2>
                                 <ul className='chosen-filters'>
-                                    {
-                                        getFiltersList().map(item => {
-                                            return (
-                                                <li>
-                                                    <button className='remove-btn'><IoCloseSharp /></button>
-                                                    <span>{item}</span>
-                                                </li>
-                                            )
-                                        })
-                                    }
+                                    {mapFiltersList}
                                 </ul>
                             </div>
                         }
-                        <div className='paginate-btns'>
-                            <button 
-                            className={current === 1 ? "btn chevron disabled" : "btn chevron"} 
-                            onClick={handleChevronLeft}
-                            >
-                            <FaChevronLeft />
-                            </button>
-                            {
-                                Array.from({length:paginationPages}, (v, i) => i + 1).map((page, i) => {
-                                    if (page < 3 ) {
-                                        return (
-                                            <button 
-                                            className={current === page ? 'btn active' : 'btn'} 
-                                            onClick={()=> setCurrent(page)}
-                                            >
-                                            {page}
-                                            </button>
-                                        ) 
-                                    }
-                                    if (current === page ) {
-                                        return (
-                                            <button 
-                                            className={current === page ? 'btn active' : 'btn'} 
-                                            onClick={()=> setCurrent(page)}
-                                            >
-                                            {page}
-                                            </button>
-                                        ) 
-                                    }
-                                    if (page === paginationPages) {
-                                        return (
-                                            <button 
-                                            className={current === page ? 'btn active' : 'btn'} 
-                                            onClick={()=> setCurrent(page)}
-                                            >
-                                            {page}
-                                            </button>
-                                        )
-                                    }
-
-                                    return (
-                                        <span className='dots'>.</span>
-                                    ) 
-                                    
-                                })
-                            }
-                            <button 
-                            className={current === paginationPages ? "btn chevron disabled" : "btn chevron"}
-                            onClick={handleChevronRight}
-                            >
-                            <FaChevronRight />
-                            </button>
-                        </div>
+                        <Pagination current={current} setCurrent={setCurrent} paginationPages = {paginationPages} />
                     </div>
                 </div>
             </div>
