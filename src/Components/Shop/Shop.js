@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
 import { BsGridFill } from "react-icons/bs";
@@ -8,6 +8,9 @@ import Item from '../Item/Item';
 import "./Shop.css"
 import newArrivals from '../Assets/NewArrivals';
 import PriceRange from '../PriceRange/PriceRange';
+import DropdownMenu from './DropdownMenu/DropdownMenu';
+import { sortBy, shownItemsNum } from '../Assets/DropDownMenu';
+import all_product from '../Assets/all_product';
 
 export default function Shop() {
     
@@ -18,6 +21,7 @@ export default function Shop() {
     const[isTypeCheck, setIsTypeCheck] = useState(false);
     const[chosenColors, setChosenColors] = useState([]);
     const[chosenTypes, setChosenTypes] = useState([]);
+    const[valToSort, setValToSort] = useState(sortBy[0].value);
 
     const[range, setRange] = useState({
         minRange: 0,
@@ -32,21 +36,53 @@ export default function Shop() {
         }
     }
 
+    const handleDropdownSort = (val, list=products) => {
+        setValToSort(val);
+        if (val === "Alphabetically, A-Z") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return a.name.localeCompare(b.name);
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Alphabetically, Z-A") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return b.name.localeCompare(a.name);
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Price, low to high") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return a.newPrice - b.newPrice;
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Price, high to low") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return b.newPrice - a.newPrice;
+            });
+            setProducts(sortedProducts);
+        }
+        else {
+            console.log(val);
+        }
+    }
+
     const filterColors = (e) => {
         if(e.target.checked) {
             if (!isColorCheck) {
                 if (!isTypeCheck) {
                     const newProducts = all_product.filter(item => item.color === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
-                    setProducts(newProducts);
+                    handleDropdownSort(valToSort, newProducts);
                 } else {
                     const newProducts = products.filter(item => item.color === e.target.value);
-                    setProducts(newProducts);
+                    handleDropdownSort(valToSort, newProducts);
                 }
                 setIsColorCheck(true);
             } else {
                 if (!isTypeCheck) {
                     const newProducts = all_product.filter(item => item.color === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
-                    setProducts([...products, ...newProducts]);
+                    const finalProducts = [...products, ...newProducts];
+                    handleDropdownSort(valToSort, finalProducts);
                 } else {
                     let newProducts = [];
                     for (let i = 0; i < chosenTypes.length; i++) {
@@ -54,7 +90,7 @@ export default function Shop() {
                         newProducts = [...newProducts, ...newItem];
                     }
                     const finalProducts = [...products, ...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                    setProducts(finalProducts);
+                    handleDropdownSort(valToSort, finalProducts);
                 }
             }
             setChosenColors([...new Set([...chosenColors, e.target.value])]);
@@ -63,7 +99,7 @@ export default function Shop() {
             const newProducts = products.filter(item => item.color !== e.target.value );
             console.log(newProducts);
             if (newProducts.length) {
-                setProducts(newProducts);
+                handleDropdownSort(valToSort, newProducts);
             } 
             if(!newProducts.length && isTypeCheck) {
                 let newProducts = [];
@@ -72,11 +108,11 @@ export default function Shop() {
                         newProducts = [...newProducts, ...newItem];
                     }
                 const finalProducts = [...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                setProducts(finalProducts);
+                handleDropdownSort(valToSort, finalProducts);
             }
             if (!newProducts.length && !isTypeCheck) {
                 const newProducts = all_product.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                setProducts(newProducts);
+                handleDropdownSort(valToSort, newProducts);
             } 
             if (!newProducts.length) {
                 setIsColorCheck(false);
@@ -92,16 +128,17 @@ export default function Shop() {
             if (!isTypeCheck) {
                 if (!isColorCheck) {
                     const newProducts = all_product.filter(item => item.type === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
-                    setProducts(newProducts);
+                    handleDropdownSort(valToSort, newProducts);
                 } else {
                     const newProducts = products.filter(item => item.type === e.target.value);
-                    setProducts(newProducts);
+                    handleDropdownSort(valToSort, newProducts);
                 }
                 setIsTypeCheck(true);
             } else {
                 if (!isColorCheck) {
                     const newProducts = all_product.filter(item => item.type === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
-                    setProducts([...products, ...newProducts]);
+                    const finalProducts = [...products, ...newProducts];
+                    handleDropdownSort(valToSort, finalProducts);
                 } else {
                     let newProducts = [];
                     for (let i = 0; i < chosenColors.length; i++) {
@@ -109,7 +146,7 @@ export default function Shop() {
                         newProducts = [...newProducts, ...newItem];
                     }
                     const finalProducts = [...products, ...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                    setProducts(finalProducts);
+                    handleDropdownSort(valToSort, finalProducts);
                 }
             }
             setChosenTypes([...new Set([...chosenTypes, e.target.value])]);
@@ -117,7 +154,7 @@ export default function Shop() {
             chosenTypes.splice(chosenTypes.indexOf(e.target.value), 1);
             const newProducts = products.filter(item => item.type !== e.target.value );
             if (newProducts.length) {
-                setProducts(newProducts);
+                handleDropdownSort(valToSort, newProducts);
             } 
             if(!newProducts.length && isColorCheck) {
                 let newProducts = [];
@@ -126,11 +163,11 @@ export default function Shop() {
                         newProducts = [...newProducts, ...newItem];
                     }
                 const finalProducts = [...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                setProducts(finalProducts);
+                handleDropdownSort(valToSort, finalProducts);
             }
             if (!newProducts.length && !isColorCheck) {
                 const newProducts = all_product.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                setProducts(newProducts);
+                handleDropdownSort(valToSort, newProducts);
             } 
             if (!newProducts.length) {
                 setIsTypeCheck(false);
@@ -142,7 +179,7 @@ export default function Shop() {
     const filterPrices = () => {
         if (!isColorCheck && !isTypeCheck) {
             const newProducts = all_product.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-            setProducts(newProducts);
+            handleDropdownSort(valToSort, newProducts);
         } else {
             const newProducts = products.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
             setProducts(newProducts);
@@ -152,8 +189,8 @@ export default function Shop() {
                         const newItem = all_product.filter(item => item.color === chosenColors[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
-                    const newProducts2 = newProducts.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                    setProducts(newProducts2);
+                    const finalProducts = newProducts.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
+                    handleDropdownSort(valToSort, finalProducts);
             } 
             if (!isColorCheck && isTypeCheck) {
                 let newProducts = [];
@@ -161,8 +198,8 @@ export default function Shop() {
                         const newItem = all_product.filter(item => item.type === chosenTypes[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
-                const newProducts2 = newProducts.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                setProducts(newProducts2);
+                const finalProducts = newProducts.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
+                handleDropdownSort(valToSort, finalProducts);
             } 
             if (isColorCheck && isTypeCheck) {
                 let firstProducts = [];
@@ -177,10 +214,44 @@ export default function Shop() {
                         secondProducts = [...secondProducts, ...newItem];
                 }
                 const finalProducts = secondProducts.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
-                setProducts(finalProducts);
+                handleDropdownSort(valToSort, finalProducts);
             }
         }
     }
+
+    const handleShownItemNum = (val) => {
+        setItems(parseInt(val));
+      }
+
+    /*const handleDropdownFilter = (val) => {
+        if (val === "Alphabetically, A-Z") {
+            const sortedProducts = [...products].sort((a, b) => {
+                return a.name.localeCompare(b.name);
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Alphabetically, Z-A") {
+            const sortedProducts = [...products].sort((a, b) => {
+                return b.name.localeCompare(a.name);
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Price, low to high") {
+            const sortedProducts = [...products].sort((a, b) => {
+                return a.newPrice - b.newPrice;
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Price, high to low") {
+            const sortedProducts = [...products].sort((a, b) => {
+                return b.newPrice - a.newPrice;
+            });
+            setProducts(sortedProducts);
+        }
+        else {
+            console.log(val);
+        }
+    }*/
 
     // pagination
     const data = products;
@@ -201,10 +272,6 @@ export default function Shop() {
         if (current < paginationPages) {
             setCurrent(current + 1);
         }
-    }
-
-    const handleSelectShow = (e) => {
-        setItems(e.target.value);
     }
 
   return (
@@ -299,29 +366,15 @@ export default function Shop() {
                         </div>
                         <div className='select-boxes'>
                             <div className='sort'>
-                                <select name="cars" id="cars">
-                                    <option value="volvo">sort by :</option>
-                                    <option value="saab">Featured</option>
-                                    <option value="mercedes">Best selling</option>
-                                    <option value="audi">Alphabetically, A-Z</option>
-                                    <option value="saab">Alphabetically, Z-A</option>
-                                    <option value="mercedes">Price, low to high</option>
-                                    <option value="audi">Price, high to low</option>
-                                    <option value="mercedes">Date, old to new</option>
-                                    <option value="audi">Date, new to old</option>
-                                </select>
+                                <DropdownMenu data = {sortBy} dropAction = {handleDropdownSort}/>
                             </div>
                             <div className='show'>
-                                <select name="show" id="show" onChange={handleSelectShow}>
-                                    <option value={6}>show 6 items</option>
-                                    <option value={9}>show 9 items</option>
-                                    <option value={products.length}>show all items</option>
-                                </select>
+                                <DropdownMenu data = {shownItemsNum} dropAction = {handleShownItemNum}/>
                             </div>
                         </div>
                     </div>
                     <div className='products'>
-                        <div className='products-content'>
+                        {products.length ? <div className='products-content'>
                             {
                                 dataPerPage.map(item => {
                                     return (
@@ -329,7 +382,23 @@ export default function Shop() {
                                     )
                                 })
                             }
-                        </div>
+                        </div> :
+                            <div className='no-products'>
+                                <h1>No products</h1>
+                                <ul className='chosen-filters'>
+                                    {
+                                        getFiltersList().map(item => {
+                                            return (
+                                                <li>
+                                                    <button className='remove-btn'><IoCloseSharp /></button>
+                                                    <span>{item}</span>
+                                                </li>
+                                            )
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                        }
                         <div className='paginate-btns'>
                             <button 
                             className={current === 1 ? "btn chevron disabled" : "btn chevron"} 
