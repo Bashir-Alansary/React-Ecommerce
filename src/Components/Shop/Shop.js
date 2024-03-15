@@ -10,7 +10,6 @@ import newArrivals from '../Assets/NewArrivals';
 import PriceRange from '../PriceRange/PriceRange';
 import DropdownMenu from './DropdownMenu/DropdownMenu';
 import { sortBy, shownItemsNum } from '../Assets/DropDownMenu';
-import all_product from '../Assets/all_product';
 
 export default function Shop() {
     
@@ -36,9 +35,25 @@ export default function Shop() {
         }
     }
 
+    const handleShownItemNum = (val) => {
+        setItems(parseInt(val));
+      }
+
     const handleDropdownSort = (val, list=products) => {
         setValToSort(val);
-        if (val === "Alphabetically, A-Z") {
+        if (val === "Featured") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return a.id - b.id;
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Best selling") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return (b.oldPrice - b.newPrice) - (a.oldPrice - a.newPrice);
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Alphabetically, A-Z") {
             const sortedProducts = [...list].sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
@@ -59,6 +74,18 @@ export default function Shop() {
         else if (val === "Price, high to low") {
             const sortedProducts = [...list].sort((a, b) => {
                 return b.newPrice - a.newPrice;
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Date, old to new") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return a.id - b.id;
+            });
+            setProducts(sortedProducts);
+        }
+        else if (val === "Date, new to old") {
+            const sortedProducts = [...list].sort((a, b) => {
+                return b.id - a.id;
             });
             setProducts(sortedProducts);
         }
@@ -219,40 +246,6 @@ export default function Shop() {
         }
     }
 
-    const handleShownItemNum = (val) => {
-        setItems(parseInt(val));
-      }
-
-    /*const handleDropdownFilter = (val) => {
-        if (val === "Alphabetically, A-Z") {
-            const sortedProducts = [...products].sort((a, b) => {
-                return a.name.localeCompare(b.name);
-            });
-            setProducts(sortedProducts);
-        }
-        else if (val === "Alphabetically, Z-A") {
-            const sortedProducts = [...products].sort((a, b) => {
-                return b.name.localeCompare(a.name);
-            });
-            setProducts(sortedProducts);
-        }
-        else if (val === "Price, low to high") {
-            const sortedProducts = [...products].sort((a, b) => {
-                return a.newPrice - b.newPrice;
-            });
-            setProducts(sortedProducts);
-        }
-        else if (val === "Price, high to low") {
-            const sortedProducts = [...products].sort((a, b) => {
-                return b.newPrice - a.newPrice;
-            });
-            setProducts(sortedProducts);
-        }
-        else {
-            console.log(val);
-        }
-    }*/
-
     // pagination
     const data = products;
     const [items, setItems] = useState(6);
@@ -384,7 +377,7 @@ export default function Shop() {
                             }
                         </div> :
                             <div className='no-products'>
-                                <h1>No products</h1>
+                                <h2>No products</h2>
                                 <ul className='chosen-filters'>
                                     {
                                         getFiltersList().map(item => {
