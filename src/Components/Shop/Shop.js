@@ -10,6 +10,10 @@ import PriceRange from '../PriceRange/PriceRange';
 import DropdownMenu from './DropdownMenu/DropdownMenu';
 import { sortBy, shownItemsNum } from '../Assets/DropDownMenu';
 import Pagination from './Pagination/Pagination';
+import Banner from '../Banner/Banner';
+import shopBanner from "../Assets/images/shop_banner.png";
+import FilterColors from './FilterColors';
+import FilterTypes from './FilterTypes';
 
 export default function Shop() {
     
@@ -96,9 +100,6 @@ export default function Shop() {
                 return b.id - a.id;
             });
             setProducts(sortedProducts);
-        }
-        else {
-            console.log(val);
         }
     }
 
@@ -266,6 +267,7 @@ export default function Shop() {
 
   return (
     <div className='shop'>
+        <Banner title="shop" img = {shopBanner} />
         <div className='container'>
             <div className='content'>
                 <div className='left-box'>
@@ -274,46 +276,8 @@ export default function Shop() {
                             {mapFiltersList}
                         </ul>
                     </div>
-                    <div className='category'>
-                        <h3>colors</h3>
-                        <ul className='colors'>
-                            {
-                                colors.map((color, i)=> {
-                                    return (
-                                        <li key={i} className='color'>
-                                            <input
-                                            type="checkbox" 
-                                            id={color} 
-                                            value={color} 
-                                            onChange={filterColors} 
-                                            />
-                                            <label for={color}>{color}</label>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
-                    <div className='category'>
-                        <h3>products types</h3>
-                        <ul className='product-types'>
-                            {
-                                productTypes.map((type, i)=> {
-                                    return (
-                                        <li key={i} className='product-type'>
-                                            <input 
-                                            type="checkbox" 
-                                            id={type} 
-                                            value={type} 
-                                            onChange={filterTypes} 
-                                            />
-                                            <label for={type}>{type}</label>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
+                    <FilterColors filterColors = {filterColors} />
+                    <FilterTypes filterTypes = {filterTypes} />
                     <div className='category'>
                         <h3>Pricr range</h3>
                         <PriceRange range = {range} setRange = {setRange} filterPrices = {filterPrices} />
