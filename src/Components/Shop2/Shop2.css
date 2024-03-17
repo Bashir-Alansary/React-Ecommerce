@@ -1,0 +1,141 @@
+.shop2 {
+    
+}
+
+.shop2 .container > .content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.shop2 .content .left-box {
+    width: 22%;
+}
+
+.shop2 .left-box .category {
+    margin-bottom: 40px;
+}
+
+.shop2 .chosen-filters {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shop2 .chosen-filters li {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    padding: 3px 8px;
+    background: #f8f8f8;
+    font-size: 14px;
+}
+
+.shop2 .chosen-filters li button {
+    background: none;
+    padding: 0;
+    border: none;
+    margin-right: 5px;
+    font-size: 13px;
+    color: rebeccapurple;
+}
+
+.shop2 .left-box .category > h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.shop2 .left-box .category li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.shop2 .left-box .category li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: rebeccapurple;
+    margin-right: 8px;
+}
+
+.shop2 .left-box .category li input[type="checkbox"],
+.shop2 .left-box .category li label {
+    cursor: pointer;
+}
+
+.shop2 .content .right-box {
+    width: 74%;
+}
+
+.shop2 .content .top-filter {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 20px;
+    background: #f8f8f8;
+    z-index: 99;
+}
+
+.shop2 .content .products {
+    width: 100%;
+}
+
+.shop2 .no-products {
+    padding: 50px 0;
+    text-align: center;
+    height: 250px;
+}
+
+.shop2 .no-products .chosen-filters {
+    justify-content: center;
+}
+
+.shop2 .content .top-filter .view .view-btn {
+    background: none;
+    border: none;
+    margin-right: 8px;
+    font-size: 22px;
+}
+
+.shop2 .top-filter .view .view-btn.active {
+    color: rebeccapurple;
+}
+
+.shop2 .content .top-filter .select-boxes {
+    display: flex;
+}
+
+.shop2 .content .top-filter .select-boxes select {
+    padding: 5px 8px;
+    border: none;
+    border-right: 8px solid transparent;
+    border-radius: 5px;
+    box-shadow: #63636309 0 2px 8px;
+}
+
+.shop2 .top-filter .select-boxes select:focus {
+    outline: none;
+}
+
+.shop2 .content .top-filter .select-boxes .sort {
+    margin-right: 60px;
+}
+
+.shop2 .content .products-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shop2 .products-content .item {
+    width: 31%;
+    margin-right: 3.5%;
+}
+
+.shop2 .products-content .item:nth-child(3n) {
+    margin-right: 0;
+}
+

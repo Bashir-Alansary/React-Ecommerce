@@ -4,21 +4,22 @@ import { BsGridFill } from "react-icons/bs";
 import { IoCloseSharp } from "react-icons/io5";
 import { useShopContext } from '../../Context/ShopContext'
 import Item from '../Item/Item';
-import "./Shop.css"
+import "./Shop2.css"
 import newArrivals from '../Assets/NewArrivals';
 import PriceRange from './PriceRange/PriceRange';
 import DropdownMenu from './DropdownMenu/DropdownMenu';
 import { sortBy, shownItemsNum } from '../Assets/DropDownMenu';
 import Pagination from './Pagination/Pagination';
-import Banner from '../Banner/Banner';
-import shopBanner from "../Assets/images/shop_banner.png";
-import FilterColors from './FilterColors';
-import FilterTypes from './FilterTypes';
+import Banner from '../Banner/Banner';;
+import FilterAllData from './FilterAllData';
+import FilterMenData from './FilterMenData';
+import FilterWomenData from './FilterWomenData';
+import FilterKidsData from './FilterKidsData';
 
-export default function Shop() {
-    
-    const {all_product} = useShopContext();
-    const[products, setProducts] = useState(all_product);
+export default function Shop2({category, img}) {
+    const {all_product, currentCategory, setCurrentCategory} = useShopContext();
+    const categoryData = all_product.filter(item => item.category === category || category === "Shop");
+    const[products, setProducts] = useState(categoryData);
     const[listView, setListView] = useState(false);
     const[isColorCheck, setIsColorCheck] = useState(false);
     const[isTypeCheck, setIsTypeCheck] = useState(false);
@@ -31,6 +32,7 @@ export default function Shop() {
         maxRange: 300,
     });
 
+
     // pagination
     const data = products;
     const [current, setCurrent] = useState(1);
@@ -38,6 +40,29 @@ export default function Shop() {
     const startIndex = (current - 1) * paginationItems;
     const endIndex = startIndex + paginationItems;
     const dataPerPage = data.slice(startIndex, endIndex);
+
+    useEffect(()=> {
+        setProducts(categoryData);
+        setChosenColors([]);
+        setChosenTypes([]);
+        setRange({minRange: 0, maxRange: 300})
+        setValToSort(sortBy[0].value);
+        setPaginationItems(6);
+        setCurrent(1);
+        setListView(false);
+    }, [category]);
+
+    const getFilterComp = () => {
+        if (category === "Women") {
+            return <FilterWomenData filterColors={filterColors} filterTypes = {filterTypes} categoryData = {categoryData} />
+        } else if (category === "Men") {
+            return  <FilterMenData filterColors={filterColors} filterTypes = {filterTypes} categoryData = {categoryData} />
+        } else if (category === "Kids") {
+            return <FilterKidsData filterColors={filterColors} filterTypes = {filterTypes} categoryData = {categoryData} />
+        } else {
+            return <FilterAllData filterColors={filterColors} filterTypes = {filterTypes} categoryData = {categoryData}/>
+        }
+    }
 
     const getFiltersList = () => {
         if (range.minRange === 0 && range.maxRange === 300) {
@@ -49,6 +74,7 @@ export default function Shop() {
 
     const handleShownItemNum = (val) => {
         setPaginationItems(parseInt(val));
+        setCurrent(1);
       }
 
     const handleDropdownSort = (val, list=products) => {
@@ -107,7 +133,7 @@ export default function Shop() {
         if(e.target.checked) {
             if (!isColorCheck) {
                 if (!isTypeCheck) {
-                    const newProducts = all_product.filter(item => item.color === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
+                    const newProducts = categoryData.filter(item => item.color === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
                     handleDropdownSort(valToSort, newProducts);
                 } else {
                     const newProducts = products.filter(item => item.color === e.target.value);
@@ -116,13 +142,13 @@ export default function Shop() {
                 setIsColorCheck(true);
             } else {
                 if (!isTypeCheck) {
-                    const newProducts = all_product.filter(item => item.color === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
+                    const newProducts = categoryData.filter(item => item.color === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
                     const finalProducts = [...products, ...newProducts];
                     handleDropdownSort(valToSort, finalProducts);
                 } else {
                     let newProducts = [];
                     for (let i = 0; i < chosenTypes.length; i++) {
-                        const newItem = all_product.filter(item => item.color === e.target.value && item.type === chosenTypes[i]);
+                        const newItem = categoryData.filter(item => item.color === e.target.value && item.type === chosenTypes[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
                     const finalProducts = [...products, ...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
@@ -140,14 +166,14 @@ export default function Shop() {
             if(!newProducts.length && isTypeCheck) {
                 let newProducts = [];
                     for (let i = 0; i < chosenTypes.length; i++) {
-                        const newItem = all_product.filter(item => item.type === chosenTypes[i]);
+                        const newItem = categoryData.filter(item => item.type === chosenTypes[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
                 const finalProducts = [...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
                 handleDropdownSort(valToSort, finalProducts);
             }
             if (!newProducts.length && !isTypeCheck) {
-                const newProducts = all_product.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
+                const newProducts = categoryData.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
                 handleDropdownSort(valToSort, newProducts);
             } 
             if (!newProducts.length) {
@@ -163,7 +189,7 @@ export default function Shop() {
         if(e.target.checked) {
             if (!isTypeCheck) {
                 if (!isColorCheck) {
-                    const newProducts = all_product.filter(item => item.type === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
+                    const newProducts = categoryData.filter(item => item.type === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
                     handleDropdownSort(valToSort, newProducts);
                 } else {
                     const newProducts = products.filter(item => item.type === e.target.value);
@@ -172,13 +198,13 @@ export default function Shop() {
                 setIsTypeCheck(true);
             } else {
                 if (!isColorCheck) {
-                    const newProducts = all_product.filter(item => item.type === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
+                    const newProducts = categoryData.filter(item => item.type === e.target.value && (parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange));
                     const finalProducts = [...products, ...newProducts];
                     handleDropdownSort(valToSort, finalProducts);
                 } else {
                     let newProducts = [];
                     for (let i = 0; i < chosenColors.length; i++) {
-                        const newItem = all_product.filter(item => item.type === e.target.value && item.color === chosenColors[i]);
+                        const newItem = categoryData.filter(item => item.type === e.target.value && item.color === chosenColors[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
                     const finalProducts = [...products, ...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
@@ -195,14 +221,14 @@ export default function Shop() {
             if(!newProducts.length && isColorCheck) {
                 let newProducts = [];
                     for (let i = 0; i < chosenColors.length; i++) {
-                        const newItem = all_product.filter(item => item.color === chosenColors[i]);
+                        const newItem = categoryData.filter(item => item.color === chosenColors[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
                 const finalProducts = [...newProducts].filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
                 handleDropdownSort(valToSort, finalProducts);
             }
             if (!newProducts.length && !isColorCheck) {
-                const newProducts = all_product.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
+                const newProducts = categoryData.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
                 handleDropdownSort(valToSort, newProducts);
             } 
             if (!newProducts.length) {
@@ -214,7 +240,7 @@ export default function Shop() {
 
     const filterPrices = () => {
         if (!isColorCheck && !isTypeCheck) {
-            const newProducts = all_product.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
+            const newProducts = categoryData.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
             handleDropdownSort(valToSort, newProducts);
         } else {
             const newProducts = products.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
@@ -222,7 +248,7 @@ export default function Shop() {
             if (isColorCheck && !isTypeCheck) {
                 let newProducts = [];
                     for (let i = 0; i < chosenColors.length; i++) {
-                        const newItem = all_product.filter(item => item.color === chosenColors[i]);
+                        const newItem = categoryData.filter(item => item.color === chosenColors[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
                     const finalProducts = newProducts.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
@@ -231,7 +257,7 @@ export default function Shop() {
             if (!isColorCheck && isTypeCheck) {
                 let newProducts = [];
                     for (let i = 0; i < chosenTypes.length; i++) {
-                        const newItem = all_product.filter(item => item.type === chosenTypes[i]);
+                        const newItem = categoryData.filter(item => item.type === chosenTypes[i]);
                         newProducts = [...newProducts, ...newItem];
                     }
                 const finalProducts = newProducts.filter(item => parseInt(item.newPrice) >= range.minRange && parseInt(item.newPrice) <= range.maxRange);
@@ -240,7 +266,7 @@ export default function Shop() {
             if (isColorCheck && isTypeCheck) {
                 let firstProducts = [];
                     for (let i = 0; i < chosenColors.length; i++) {
-                        const newItem = all_product.filter(item => item.color === chosenColors[i]);
+                        const newItem = categoryData.filter(item => item.color === chosenColors[i]);
                         firstProducts = [...firstProducts, ...newItem];
                     }
                 console.log(firstProducts);
@@ -266,8 +292,8 @@ export default function Shop() {
     })
 
   return (
-    <div className='shop'>
-        <Banner title="shop" img = {shopBanner} />
+    <div className='shop2'>
+        <Banner title={category} img = {img} />
         <div className='container'>
             <div className='content'>
                 <div className='left-box'>
@@ -276,10 +302,9 @@ export default function Shop() {
                             {mapFiltersList}
                         </ul>
                     </div>
-                    <FilterColors filterColors = {filterColors} />
-                    <FilterTypes filterTypes = {filterTypes} />
+                    {getFilterComp()}
                     <div className='category'>
-                        <h3>Pricr range</h3>
+                        <h3>Price range</h3>
                         <PriceRange range = {range} setRange = {setRange} filterPrices = {filterPrices} />
                     </div>
                     <div className='category'>
@@ -311,10 +336,10 @@ export default function Shop() {
                         </div>
                         <div className='select-boxes'>
                             <div className='sort'>
-                                <DropdownMenu data = {sortBy} dropAction = {handleDropdownSort}/>
+                                <DropdownMenu data = {sortBy} dropAction = {handleDropdownSort} categoryData = {categoryData}/>
                             </div>
                             <div className='show'>
-                                <DropdownMenu data = {shownItemsNum} dropAction = {handleShownItemNum}/>
+                                <DropdownMenu data = {shownItemsNum} dropAction = {handleShownItemNum} categoryData = {categoryData} />
                             </div>
                         </div>
                     </div>

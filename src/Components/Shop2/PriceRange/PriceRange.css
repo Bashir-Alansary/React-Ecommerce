@@ -1,0 +1,80 @@
+.price-range .slider {
+    position: relative;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+.price-range .slider .bar {
+    position: absolute;
+    height: 5px;
+    left: 0;
+    right: 0;
+    background: rebeccapurple;
+    border-radius: 5px;
+}
+
+.price-range .slider .range-inputs {
+    position: relative;
+}
+
+.price-range .slider .range-inputs input {
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: none;
+    -webkit-appearance: none;
+    pointer-events: none;
+}
+
+.price-range input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #e9e4e4;
+    border: 1px solid rebeccapurple;
+    border-radius: 50%;
+    pointer-events: auto;
+    cursor: grabbing;
+}
+
+.price-range .num-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.price-range .num-inputs .num-input {
+    position: relative;
+    width: 120px;
+}
+
+.price-range .num-input input {
+    width: 100%;
+    padding-left: 10px;
+    background: #f8f8f8;
+    border: 1px solid #e9e4e4;
+    margin-top: 5px;
+    color: rebeccapurple;
+}
+
+.price-range .num-input input:focus {
+    outline: none;
+}
+
+.price-range .num-inputs .num-input:after {
+    content: "$";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.price-range .num-inputs .num-input input,
+.price-range .num-inputs .num-input:after {
+    height: 38px;
+    border-radius: 5px;
+}
