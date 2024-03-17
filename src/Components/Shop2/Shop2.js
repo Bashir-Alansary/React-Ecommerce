@@ -15,6 +15,7 @@ import FilterAllData from './FilterAllData';
 import FilterMenData from './FilterMenData';
 import FilterWomenData from './FilterWomenData';
 import FilterKidsData from './FilterKidsData';
+import ShopBanner from './ShopBanner/ShopBanner';
 
 export default function Shop2({category, img}) {
     const {all_product, currentCategory, setCurrentCategory} = useShopContext();
@@ -293,7 +294,7 @@ export default function Shop2({category, img}) {
 
   return (
     <div className='shop2'>
-        <Banner title={category} img = {img} />
+        <ShopBanner category={category} img = {img} />
         <div className='container'>
             <div className='content'>
                 <div className='left-box'>

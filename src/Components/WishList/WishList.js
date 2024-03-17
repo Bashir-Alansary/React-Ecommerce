@@ -80,7 +80,7 @@ export default function WishList() {
                         <div className='main-btn'>
                             <Link 
                             className='link special-btn' 
-                            to="/" onClick={()=>window.scroll(0,0)}>
+                            to="/shop" onClick={()=>window.scroll(0,0)}>
                             continue shopping
                             </Link>
                         </div>

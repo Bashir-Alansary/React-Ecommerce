@@ -70,7 +70,7 @@ let all_product = [
   {
     id: 2,
     name: "Striped Flutter Sleeve",
-    category: "women",
+    category: "Women",
     img: img2,
     newPrice: "85.00",
     oldPrice: "90.00",
@@ -98,7 +98,7 @@ let all_product = [
   {
     id: 4,
     name: "Striped Flutter Sleeve",
-    category: "women",
+    category: "Women",
     img: img4,
     newPrice: "70.00",
     oldPrice: "77.00",
@@ -112,7 +112,7 @@ let all_product = [
   {
     id: 5,
     name: "Striped Flutter Sleeve",
-    category: "women",
+    category: "Women",
     img: img5,
     newPrice: "82.50",
     oldPrice: "85.50",
@@ -140,7 +140,7 @@ let all_product = [
   {
     id: 7,
     name: "Striped Flutter Sleeve",
-    category: "women",
+    category: "Women",
     img: img7,
     newPrice: "95.00",
     oldPrice: "97.50",
@@ -154,7 +154,7 @@ let all_product = [
   {
     id: 8,
     name: "Striped Flutter Sleeve",
-    category: "women",
+    category: "Women",
     img: img8,
     newPrice: "35.00",
     oldPrice: "37.50",
@@ -182,7 +182,7 @@ let all_product = [
   {
     id: 10,
     name: "Striped Flutter Sleeve",
-    category: "women",
+    category: "Women",
     img:  img10,
     newPrice: "55.00",
     oldPrice: "58.50",
@@ -490,7 +490,7 @@ let all_product = [
   {
     id: 32,
     name: "Boys Orange Colourblocked",
-    category: "women",
+    category: "Women",
     img:  img32,
     newPrice: "88.00",
     oldPrice: "90.50",

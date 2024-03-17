@@ -1,0 +1,16 @@
+.banner .categories {
+    display: flex;
+    align-items: flex-end;
+}
+
+.banner .other-categories {
+    display: flex;
+}
+
+.banner .other-categories .slash {
+    margin: 0 5px;
+}
+
+.banner .other-categories .link {
+    color: #999;
+}

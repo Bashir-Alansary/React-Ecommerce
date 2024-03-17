@@ -14,7 +14,7 @@ export default function Explore() {
                     exploreData.map(item=>{
                         const{id, path, img, bcImg, name, num} = item;
                         return(
-                            <Link to={path} className='box'>
+                            <Link to={path} className='box' onClick={()=>window.scroll(0,0)}>
                                 <div className='box-content'>
                                     <div className='img-num'>
                                         <div className='imgbx'>
@@ -25,10 +25,10 @@ export default function Explore() {
                                         </div>
                                     </div>
                                     <div className='title'>
-                                        <span>Manufacturar</span>
+                                        <span className='type'>Manufacturar</span>
                                         <h2>{name}</h2>
                                     </div>
-                                    <span>see collection <IoIosArrowRoundForward /></span>
+                                    <span className='see-btn'>see collection <IoIosArrowRoundForward className='arrow' /></span>
                                 </div>
                                 <div className='bc-img'>
                                     <img src={bcImg} />

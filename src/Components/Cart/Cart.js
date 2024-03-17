@@ -97,7 +97,7 @@ export default function Cart() {
           <div className='emty-cart'>
             <h2>Your cart is empty</h2>
             <div className='main-btn'>
-              <Link className='link special-btn' to="/" onClick={()=>window.scroll(0,0)}>continue shopping</Link>
+              <Link className='link special-btn' to="/shop" onClick={()=>window.scroll(0,0)}>continue shopping</Link>
             </div>
             <h2>Have an account?</h2>
             <div className='emty-cart-login'>

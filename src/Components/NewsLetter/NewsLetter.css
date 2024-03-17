@@ -1,6 +1,6 @@
 .newsletter {
     position: relative;
-    background: #fefce8;
+    background: #fdfdfb;
     padding-bottom: 120px;
 }
 
@@ -104,6 +104,6 @@
 }
 
 .newsletter .blur-color {
-    background: linear-gradient(180deg,#fefce8, #dedede);
+    background: linear-gradient(180deg,#fdfdfb, #dedede);
 }
 

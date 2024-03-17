@@ -62,11 +62,11 @@ export default function SubCart() {
             <div className='emty-cart'>
                 <h2>Your cart is empty</h2>
                 <div className='main-btn'>
-                    <Link className='link special-btn' to="/" onClick={()=>{window.scroll(0,0); setShowSubCart(false)}}>continue shopping</Link>
+                    <Link className='link special-btn' to="/shop" onClick={()=>{window.scroll(0,0); setShowSubCart(false)}}>continue shopping</Link>
                 </div>
                 <h2>Have an account?</h2>
                 <div className='emty-cart-login'>
-                    <Link to="login" onClick={()=>{window.scroll(0,0); setShowSubCart(false)} }>login</Link>
+                    <Link to="/login" onClick={()=>{window.scroll(0,0); setShowSubCart(false)} }>login</Link>
                     <span> to check out faster.</span>
                 </div>
             </div>
