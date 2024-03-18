@@ -34,7 +34,9 @@ export default function NewsLatter() {
                 </div>
             </div>
         </div>
-        <div className='blur-color'></div>
+        {
+            //<div className='blur-color'></div>
+        }
     </div>
   )
 }

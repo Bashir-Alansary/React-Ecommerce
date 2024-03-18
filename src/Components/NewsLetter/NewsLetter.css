@@ -86,24 +86,22 @@
 
 .newsletter .subscribe input:focus {
     outline: none;
-    box-shadow: 0 1px 15px #abc5f5;
+    box-shadow: 0 1px 15px #c4d4f3;
+    border: 1px solid #dde8fd;
 }
 
 .newsletter .subscribe button {
     width: 43px;
     height: 43px;
-    line-height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 18px;
-    text-align: center;
     border: none;
     border-radius: 50%;
     margin-left: -46px;
     background: #0f172a;
     color: #f6f6f6;
     cursor: pointer;
-}
-
-.newsletter .blur-color {
-    background: linear-gradient(180deg,#fdfdfb, #dedede);
 }
 

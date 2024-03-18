@@ -2,16 +2,16 @@ export const newsLetterData = [
     {
         id: 1,
         num: 1,
-        name: "images/facebook.png",
+        name: "Savings combos",
     },
     {
         id: 2,
         num: 2,
-        name: "contact",
+        name: "Freeship",
     },
     {
         id: 3,
         num: 3,
-        name: "images/facebook.png",
+        name: "Premium magazines",
     },
 ]
