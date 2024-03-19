@@ -91,7 +91,7 @@ h1 {
 }
 
 .banner .container h1 {
-  font-size: 40px;
+  font-size: 35px;
   letter-spacing: 2px;
   font-weight: 600;
   color: #9C27B0;
@@ -99,12 +99,12 @@ h1 {
 }
 
 .banner .container h2 {
-  font-size: 40px;
+  font-size: 24px;
   margin-bottom: 15px;
 }
 
 .banner .container span {
-  color: blueviolet;
+  color: #9C27B0;
 }
 
 .banner .banner-btn {

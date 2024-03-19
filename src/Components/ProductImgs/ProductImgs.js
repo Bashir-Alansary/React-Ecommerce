@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./ProductImgs.css"
 
 export default function ProductImgs({product}) {
@@ -21,6 +21,11 @@ export default function ProductImgs({product}) {
         setZoomImgPosition({x, y});
         setCursorPosition({x: e.pageX - left, y: e.pageY-top});
     }
+
+
+    useEffect(() => {
+        setMainImg(imgs[0]);
+    }, [product]);
 
   return (
     <div className='product-imgs'>

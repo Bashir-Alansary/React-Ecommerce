@@ -13,6 +13,7 @@ import shopBanner from "./Components/Assets/images/shop_banner.png";
 import WishList from "./Components/WishList/WishList";
 import Compare from "./Components/Compare/Compare";
 import Shop2 from "./Components/Shop2/Shop2";
+import Search from "./Components/Search/Search";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/compare" element={<Compare />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
         <Footer />
       </BrowserRouter>

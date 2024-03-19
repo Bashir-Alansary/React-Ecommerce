@@ -13,7 +13,7 @@ export default function Compare() {
 
   return (
     <div className='compare'>
-        <Banner img = {compareBanner} title = {"let's compare"} />
+        <Banner img = {compareBanner} title = {"Your compare"} num={getCompareListAmount()} />
         <div className='container'>
           {getCompareListAmount() > 0 ? <div className='content'>
             {

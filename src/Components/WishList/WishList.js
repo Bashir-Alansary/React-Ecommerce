@@ -13,7 +13,7 @@ export default function WishList() {
 
   return (
     <div className='wishlist'>
-       <Banner img = {wishlistBanner} title = {"Your Wishlist"} />
+       <Banner img = {wishlistBanner} title = {"Your Wishlist"} num={getWishlistAmount()} />
         <div className='wishlist-items'>
             <div className='container'>
                 <div className='content'>

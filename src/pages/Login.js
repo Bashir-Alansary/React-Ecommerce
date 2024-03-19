@@ -1,11 +1,14 @@
 import React from 'react'
+import Banner from '../Components/Banner/Banner'
+import loginImg from "../Components/Assets/images/login.png"
 import "./CSS/Login.css"
 
 export default function Login() {
   return (
     <div className='login'>
-      <div className="content">
-      <h2>Sign Up</h2>
+      <Banner  title = {"let's login"} img={loginImg} num = {"login"}/>
+      <div className="login-content">
+      <h2>Sign in</h2>
        <div className='inputs-content'>
           <input type="text" placeholder="your name" />
           <input type="email" placeholder="your email" />

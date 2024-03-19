@@ -38,7 +38,8 @@
 
 .item .price .old-price,
 .item-list-view .price .old-price,
-.new-arrivals-view .price .old-price{
+.new-arrivals-view .price .old-price,
+.search-view .price .old-price {
     text-decoration: line-through;
     margin-left: 20px;
     color: #888;
@@ -221,7 +222,8 @@
     margin-bottom: 30px;
 }
 
-.new-arrivals-view .content {
+.new-arrivals-view .content
+.search-view .content{
     display: flex;
 }
 
@@ -230,7 +232,8 @@
     margin-right: 10px;
 }
 
-.new-arrivals-view .imgbx img {
+.new-arrivals-view .imgbx img,
+.search-view .imgbx img {
     width: 100%;
 }
 
@@ -240,6 +243,27 @@
 }
 
 .new-arrivals-view .interact,
-.new-arrivals-view .main-btn {
+.new-arrivals-view .main-btn,
+.search-view .interact,
+.search-view .main-btn {
     display: none;
+}
+
+.search-view .imgbx {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.search-view h3 {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 0;
+}
+
+.search-view .price span {
+    font-size: 12px;
+}
+
+.search-view .content {
+    display: flex;
 }

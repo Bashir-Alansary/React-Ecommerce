@@ -1,0 +1,117 @@
+.sub-search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #00000080;
+    z-index: 9999;
+    transition: 0.5s;
+}
+
+.sub-search.show {
+    top: 0;
+}
+
+.sub-search.hide {
+    top: -100%;
+}
+
+.sub-search > .content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    height: 100%;
+}
+
+.sub-search .search-content .input-content {
+    width: 480px;
+    height: 46px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.sub-search .input-content input {
+    width: 425px;
+    height: 100%;
+    padding: 5px 25px;
+    background: #fff;
+    border: none;
+}
+
+.sub-search .input-content input:focus {
+    outline: none;
+}
+
+.sub-search .input-content .icon {
+    width: 55px;
+    text-align: center;
+    font-size: 22px;
+    color: #999;
+}
+
+.sub-search .search-content .result {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 8px 40px rgba(0,0,0,.08);
+    margin-top: 3px;
+}
+
+.sub-search .search-content .result h6 {
+    font-size: 14px;
+    padding-bottom: 7px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgb(241, 234, 234);
+}
+
+.sub-search .search-content .search-items {
+    max-height: 330px;
+}
+
+.sub-search .search-items li {
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.sub-search .search-items li:hover {
+    transform: translateX(5px);
+    background: #f8f8f8;
+}
+
+.sub-search .search-items li img {
+    transition: 0.3s;
+    outline: 3px solid #f8f8f8;
+}
+
+.sub-search .search-items li:hover img {
+    outline: 3px solid #fff;
+}
+
+.sub-search button.close{
+    border: none;
+    background: none;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+}
+
+.sub-search .close-icon {
+    transition: 0.5s;
+    font-size: 25px;
+    color: #fff;
+}
+
+.sub-search .close-icon:hover {
+    color: rgb(194, 132, 255);
+    transform: rotate(90deg);
+}

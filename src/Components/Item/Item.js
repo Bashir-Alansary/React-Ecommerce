@@ -7,7 +7,7 @@ import { MdDoneOutline } from "react-icons/md";
 import "./Item.css"
 import { useShopContext } from '../../Context/ShopContext';
 
-export default function Item({id, img, name, oldPrice, newPrice, desc, listView, type, color, newArrivalsView}) {
+export default function Item({id, img, name, oldPrice, newPrice, desc, listView, newArrivalsView, searchView}) {
   const{
     increaseItemAmount, 
     setAddedMsg, 
@@ -29,7 +29,10 @@ export default function Item({id, img, name, oldPrice, newPrice, desc, listView,
       return"item-list-view";
     } else if (newArrivalsView) {
       return newArrivalsView;
-    } else {
+    } else if (searchView) {
+      return searchView;
+    } 
+    else {
       return "item";
     }
   }

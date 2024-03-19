@@ -7,6 +7,7 @@ export default function ShopBanner({category, img}) {
 
     const categories = [...new Set(all_product.map(item => item.category)), "Shop"];
     const unChosenCategories = categories.filter(item => item !== category);
+    const categoryItemsLength = category !== "Shop" ? all_product.filter(item => item.category === category).length : false;
 
     return (
         <div className='banner'>
@@ -28,7 +29,10 @@ export default function ShopBanner({category, img}) {
                                 }
                             </ul>
                         </div>
-                        <h2><span>12</span> Hours <span>20</span> mins</h2>
+                        {categoryItemsLength ?
+                          <h2><span>{categoryItemsLength}</span> items<span> for </span>{category}</h2>
+                        : <h2><span>12</span> Hours <span>20</span> Mins</h2>
+                        }
                         <button className='banner-btn'>Explore now</button>
                     </div>
                     <div className='imgbx'>

@@ -21,7 +21,7 @@ export default function Cart() {
 
   return (
     <div className='cart'>
-      <Banner img={cartBanner} title={"Your cart"} />
+      <Banner img={cartBanner} title={"Your cart"} num = {getCartAmount()} />
       {getCartAmount() > 0 ? <div className='container'>
         <table class="table table-bordered">
           <thead>

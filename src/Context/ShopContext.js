@@ -28,6 +28,7 @@ export const ShopContextProvider = ({children}) => {
     const[starColor, setStarColor] = useState(true); // to reset stars inputs to defult color
     const[wishlist, setWishlist] = useState(getDefaultCart());
     const[compareList, setCompareList] = useState(getDefaultCart());
+    const[searchInputVal, setSearchInputVal] = useState("");
 
     const increaseItemAmount = (itemId) => {
         setCartItems((prev) => ({...prev, [itemId]:prev[itemId]+1}))
@@ -144,6 +145,8 @@ export const ShopContextProvider = ({children}) => {
         colors,
         productTypes,
         setProducts,
+        searchInputVal,
+        setSearchInputVal,
     };
 
     return(

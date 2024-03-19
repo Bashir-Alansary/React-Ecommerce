@@ -7,7 +7,7 @@ import { FiPlus, FiSearch } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import TemplatesList from '../TemplatesList/TemplatesList';
-import Search from '../Search/Search';
+import SubSearch from '../SubSearch/SubSearch';
 import wishlist from "../Assets/images/wishlist.png"
 
 export default function Navbar() {
@@ -45,7 +45,7 @@ export default function Navbar() {
                     {!showSearch && <button className="special-link" onClick={()=> setShowSearch(true)}>
                         <FiSearch className='icon' />
                     </button>}
-                    <Search showSearch={showSearch} setShowSearch={setShowSearch} />
+                    <SubSearch showSearch={showSearch} setShowSearch={setShowSearch} />
                 </div>
                 <NavLink className="link special-link" to="wishlist"><img src={wishlist} /></NavLink>
                 <NavLink className="link special-link" to="login"><AiOutlineUser className='icon' /></NavLink>
